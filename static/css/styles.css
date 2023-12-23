@@ -1,0 +1,77 @@
+/* styles.css */
+
+/* body{
+  box-sizing:border-box;
+} */
+.errorlist {
+  margin: 0;
+  padding: 0;
+  color: #a94442; /* Couleur rouge de Bootstrap pour les erreurs */
+  /* list-style: none; */
+}
+.form-layout {
+  border-radius: 15px;
+  width: 500px;
+}
+
+#sidebarCollapse {
+  position: absolute;
+  top: 45%;
+  left: 230px;
+  transform: translateY(-50%);
+}
+
+#wrapper {
+  display: flex;
+}
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  /* background: #343a40; */
+  /* color: #fff; */
+  transition: all 0.3s;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebarCollapse.active {
+  margin-left: 10px;
+}
+#content {
+  width: 100%;
+  margin-left: 240px;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
+#content.active {
+  margin-left: 25px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.nav-link.active {
+  /* Ajoutez ici le style pour le lien actif */
+  background-color: #2c3d4f;
+  color: #fff !important;
+}
+
+.btn:active,
+.btn:focus,
+.page-link:active,
+.page-link:focus {
+  box-shadow: none !important; /* Désactiver l'ombre au clic ou au focus */
+  outline: none !important; /* Désactiver la bordure autour du bouton au focus */
+}

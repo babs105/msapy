@@ -1,0 +1,28 @@
+<nav id="sidebar" class="p-4 bg-light position-fixed h-100 shadow-md ">
+  <a type="button" id="sidebarCollapse" class="btn btn-sm btn-dark">
+    <i class="fa fa-chevron-left"></i>
+  </a>
+  <div class="sidebar-header">
+    <h3>Accueil</h3>
+  </div>
+  <br>
+  <ul class="list-unstyled  h5">
+    <br>
+    <li>
+      <a href="{% url 'carburant-home' %}" class="nav-link">Carburant</a>
+    </li>
+     <br>
+    <li>
+      <a href="{% url 'add-produit' %}" class="nav-link">Produit</a>
+    </li>
+    <br>
+    <li>
+      <a href="#" class="nav-link">About</a>
+    </li>
+    <br>
+    <li>
+      <a href="#" class="nav-link">Contact</a>
+    </li>
+    <br>
+  </ul>
+</nav>

@@ -1,0 +1,65 @@
+{% extends "ecom/layouts/base.html" %} 
+
+{% block content %}
+<!-- templates/produit_detail.html -->
+<br>
+<h4 class="text-center text-secondary">Détail produit</h4>
+<hr>
+  <div class="container mt-5 " style="height: calc(100vh - 56px)">
+    <div class="row border p-4 rounded text-secondary">
+      <div class="col-md-7 ">
+        <!-- Afficher les détails du produit -->
+        <h2 class="text-secondary">{{ produit.nom }}</h2>
+        <br>
+        <p>{{ produit.description }}</p>
+        <br>
+        {% if produit.categories.all %}
+        <span>Categorie :</span>
+          {% for categorie in produit.categories.all %}
+            <span class="badge badge-light p-2"> {{ categorie.nom }}</span>
+             {% endfor %}
+        {% endif %}    
+      </div>
+
+      <div class="col-md-5">
+        <!-- Afficher les images du produit -->
+        {% if produit.image_set.all %}
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              {% for image in produit.image_set.all %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+              {% endfor %}
+            </ol>
+            <div class="carousel-inner ">
+              {% for image in produit.image_set.all %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <img style="height: 300px;width: 300px;" src="{{ image.image.url }}" class="d-block w-100" alt="{{ produit.nom }}">
+                </div>
+              {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        {% else %}
+          <p>Ce produit n'a pas d'images.</p>
+        {% endif %}
+      </div>
+
+      <br>
+    </div>
+  </div>
+  <br>
+  <br>
+{% endblock %}
+
+
+
+
+

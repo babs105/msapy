@@ -1,0 +1,59 @@
+{% extends "homeapp/layouts/base.html" %} {% block content %}
+<br />
+<div class="container border shadow-md p-5 rounded" style="width: 700px">
+  <h4 class="mb-4 text-center">Modification Produit</h4>
+  <hr />
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{ produit_form.as_p }}
+    <!-- {{ image_formset.management_form }}
+      {% for form in image_formset.forms %} 
+        {{ form.as_p }} 
+      {% endfor %} -->
+      <br>
+      <h6> Images Associées</h6>
+    {{ image_formset.management_form }}
+     {% for form in image_formset.forms %}
+        <div class="card mb-3">
+            <div class="card-body">
+                {% if form.instance.image %}
+                <label for="{{form.image.id }}" >
+                  <img style="width: 100px;height: 100px;" src="{{ form.instance.image.url }}">
+                </label>
+                {{ form.as_table}}
+                {% else %}
+                <label for="{{form.image.id }}">
+                  <div style="padding-bottom: 50%;"></div>
+                </label>
+                {{ form.as_p}}
+              {% endif %}
+               
+            </div>
+        </div>
+      {% endfor %}
+    <!-- <h3>Images associées :</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                   
+                {{ image_formset.management_form }}
+                {% for form in image_formset.forms %}
+                    <tr>
+                        <td>{{ form.image }}</td>
+                        <td>{{ form.DELETE }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table> -->
+
+    <br />
+    <button type="submit" class="btn btn-primary">Modifier Produit</button>
+  </form>
+</div>
+<br />
+{% endblock content %}

@@ -1,0 +1,64 @@
+{% extends "homeapp/layouts/base.html" %} 
+{% block content %}
+<br>
+<div class="container border shadow-md p-5  form-layout">
+
+  <h4 class="text-center text-secondary">Ajout produit</h4>
+  <hr />
+  <form
+    class=""
+    method="post"
+    action=""
+    id="login-form"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <!-- {{form.as_p}}  -->
+    <!-- <div class="form-group">
+      {{form.errors}}
+    </div> -->
+    {% if form.errors %}
+    <div class="alert alert-danger">
+      <strong>Erreur(s) dans le formulaire :</strong>
+      <ul>
+        {% for field, errors in form.errors.items %} {% for error in errors %}
+        <li>{{ field }}</li>
+        <li>{{ error }}</li>
+        {% endfor %} {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+      {{form.nom.label}} {{form.nom}}
+      <div class="invalid-feedback">{{form.nom.errors }}</div>
+    </div>
+    <div class="form-group">
+      {{form.description.label}} {{form.description}}
+      <div class="invalid-feedback">{{ form.description.errors }}</div>
+    </div>
+    <div class="form-group">
+      {{form.prix.label}} {{form.prix}}
+      <div class="invalid-feedback">{{ form.prix.errors }}</div>
+    </div>
+    <div class="form-group">
+      {{form.categories.label}} {{form.categories}}
+      <div class="invalid-feedback">{{ form.categories.errors }}</div>
+    </div>
+    <div class="form-group">
+      {{form.images.label}} {{form.images}}
+      <div class="invalid-feedback">{{ form.images.errors }}</div>
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-block btn-primary p-2">
+      Enregister &nbsp;
+      <!-- <i class="fa fa-key" aria-hidden="true"></i
+    > -->
+    </button>
+  </form>
+  <br />
+</div>
+<br />
+{% endblock content %}
+

@@ -1,0 +1,79 @@
+{% extends "connexion/layouts/base.html" %} {% block content %}
+
+<div class="container bg-light shadow-md p-5 form-layout">
+  <br />
+  <h4 class="text-center text-secondary">Connexion</h4>
+  <hr />
+  <form class="" method="post" action="" id="login-form" >
+    {% csrf_token %}
+    <!-- {{form.as_p}}  -->
+    <!-- <div class="form-group">
+      {{form.errors}}
+    </div> -->
+    {% if form.errors %}
+    <div class="alert alert-danger">
+      <strong>Erreur(s) dans le formulaire :</strong>
+      <ul>
+        {% for field, errors in form.errors.items %} {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %} {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+      {{form.username.label}} {{form.username}}
+      <div class="invalid-feedback">{{form.username.errors }}</div>
+    </div>
+    <div class="form-group">
+      {{form.password.label}} {{form.password}}
+      <div class="invalid-feedback">{{ form.password.errors }}</div>
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-block btn-primary p-2">Se Connecter &nbsp; <i class="fa fa-key" aria-hidden="true"></i
+    ></button>
+  </form>
+  <br />
+  <div class="text-center">
+    <p>Vous n'avez pas de compte?</p>
+    <a href="{% url 'register' %}"> créér un compte</a>
+  </div>
+</div>
+<br />
+{% endblock content %}
+
+<script>
+  $(document).ready(function () {
+    $("#login-form").submit(function () {
+      // Retirez d'abord toutes les classes d'erreur existantes
+      $(".form-control").removeClass("is-invalid");
+      $(".invalid-feedback").addClass("d-none");
+
+      // Ajoutez la classe d'erreur aux champs ayant des erreurs
+      $(".form-control")
+        .filter(":invalid")
+        .each(function () {
+          $(this).addClass("is-invalid");
+          $(this).next(".invalid-feedback").removeClass("d-none");
+        });
+    });
+  });
+</script>
+
+<!-- <script>
+  $(document).ready(function() {
+      $('#login-form').submit(function() {
+          // Retirez d'abord toutes les classes d'erreur existantes
+          $('.form-control').removeClass('is-invalid');
+
+          // Ajoutez la classe d'erreur aux champs ayant des erreurs
+          $('.form-control').each(function() {
+              if ($(this).next('.invalid-feedback').length) {
+                  $('.invalid-feedback').removeClass('d-none');
+                  $(this).addClass('is-invalid');
+              }
+          });
+      });
+  });
+</script> -->

@@ -1,0 +1,29 @@
+{% extends 'homeapp/layouts/base.html' %} {% block title %}App | Profile {% endblock %}
+{% block sidebar %} 
+{% include 'homeapp/includes/sidebar_homeapp.html'%}
+{%endblock%} 
+
+ {% block content %}
+ <br>
+ <div class="container border shadow-md  p-4 form-layout"> 
+   <h4 class="text-center text-secondary">Mon Profile</h4>
+   <hr>
+   <div class="d-flex justify-content-center">
+    <img style="width:200px ;height:200px ;" class="border  rounded" src="{{ profile.profile_pic.url }}"/>
+   </div>
+   
+  
+   <hr>
+   <div class="d-flex flex-column justify-content-center  h5">
+   <p class="text-secondary"> <span>Prénom</span> :&nbsp; {{profile.user.first_name}}</p>
+   <p class="text-secondary"> <span>Nom</span> :&nbsp; {{profile.user.last_name}}</p>
+   <p class="text-secondary"> <span>E-mail</span> :&nbsp; {{profile.user.email}}</p>
+   <p class="text-secondary"> <span>Nom Utilisateur</span> :&nbsp; {{profile.user.username}}</p>
+   </div>
+   <div class="d-flex justify-content-center">
+    <a class="btn btn-primary" href="{% url 'profil-management' %}">Modifier votre profil</a>
+   </div>
+   
+ </div>
+ <br>
+ {% endblock %}

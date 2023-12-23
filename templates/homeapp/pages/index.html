@@ -1,0 +1,15 @@
+{% extends 'homeapp/layouts/baseIndex.html' %} {% block title %}Page d'accueil{% endblock %}
+{% block content %}
+<div class="container text-center col-sm-12">
+<br>
+<br>
+  <h1 class="">Plateforme web des applications metiers</h1>
+  <p class="">Contenu spécifique de la page d'accueil...</p>
+  <hr>
+  <br>
+  <br>
+   <a href="{% url 'register' %}" type="button"  class="btn btn-primary"> Ouvrir un compte &nbsp;<i class="fa fa-user-plus" aria-hidden="true"></i></a>
+</div>
+<br>
+<br>
+{% endblock %}

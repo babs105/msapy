@@ -1,0 +1,32 @@
+body {
+  padding-top: 56px; /* Height of navbar */
+}
+.navbar.fixed-top {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.hero {
+  background: #f8f9fa;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.featured-products {
+  padding: 50px 0;
+}
+
+.footer {
+  background: #343a40;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.btn:active,
+.btn:focus {
+  box-shadow: none !important; /* Désactiver l'ombre au clic ou au focus */
+  outline: none !important; /* Désactiver la bordure autour du bouton au focus */
+}

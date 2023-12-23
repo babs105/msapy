@@ -1,0 +1,104 @@
+{% extends 'carburant/layouts/base.html'%} {% block title %}Page
+d'accueil{%endblock %} 
+{%block content %}
+<br>
+<div class="container-fluid">
+  <h4 class="text-secondary">Ravitaillements Stations</h4>
+  <hr />
+  <div class="d-flex justify-content-start w-100 mb-2">
+    <a href="" class="btn btn-sm btn-outline-primary p-2"
+      >Ajout Ravitaillement &nbsp;
+      <i class="fa fa-plus-circle" aria-hidden="true"></i
+    ></a>
+  </div>
+
+  <table class="table table-hover table-sm">
+    <thead class="table bg-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date Ravitaillement</th>
+        <th scope="col">Vehicule</th>
+        <th scope="col">Affectation</th>
+        <th scope="col">Quantite</th>
+        <th scope="col">Station</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ravitaillement in ravitaillements %}
+      <tr>
+        <td scope="row">{{ravitaillement.id}}</td>
+        <td>{{ravitaillement.date_heure_ravitaillement|date:'d/m/Y H:i'}}</td>
+        <td>{{ravitaillement.vehicule.immatricule}}</td>
+        <td>{{ravitaillement.vehicule.affectation}}</td>
+        <td>{{ravitaillement.quantite}}</td>
+        <td>{{ravitaillement.station.nom}}</td>
+        <td>
+          <a href="#" class="btn btn-primary btn-sm" title="Voir"
+            ><i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+          <a href="" class="btn btn-warning btn-sm" title="Modifier"
+            ><i class="fa fa-pencil" aria-hidden="true"></i
+          ></a>
+          <a href="" class="btn btn-danger btn-sm" title="Supprimer"
+            ><i class="fa fa-trash" aria-hidden="true"></i
+          ></a>
+        </td>
+      </tr>
+      {% endfor%}
+    </tbody>
+    <!-- Modal
+    <div
+      class="modal fade"
+      id="confirmationModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Confirmation de suppression
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="POST" action="">
+            <div class="modal-body">
+              Êtes-vous sûr de vouloir supprimer ?
+              <p>
+                LE Ravitaillement {{ravitaillement.vehicule}} de
+                {{ravitaillement.quantite}} depuis {{ravitaillement.cuve}} le
+                {{ravitaillement.date_heure_ravitaillement}}
+              </p>
+
+              {% csrf_token %}
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Annuler
+              </button>
+              <a href="" class="btn btn-danger">Supprimer</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
+  </table>
+</div>
+
+{% endblock %}
+
+<!-- href="{% url 'updateravitaillement' ravitaillement.id %}" -->

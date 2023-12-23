@@ -1,0 +1,48 @@
+
+ <!-- Sidebar -->
+ <nav id="sidebar" class="p-4 bg-light position-fixed h-100 ">
+  <a type="button" id="sidebarCollapse" class="btn btn-sm btn-dark">
+    <i class="fa fa-chevron-left"></i>
+  </a>
+  <div class="sidebar-header">
+    <h4> Carburant </h4>
+  </div>
+<br>
+  <ul class="sidebar list-unstyled components h6 text-primary">
+    <li>
+      <a href="{% url 'carburant-home' %}" class="nav-link text-primary h5">Accueil</a>
+    </li>
+    <br>
+    <!-- #pageSubmenu -->
+    <li class="">
+      <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle  nav-link text-primary h5">Ravitaillements</a>
+        <ul class="collapse list-unstyled ml-3 " id="pageSubmenu">
+          <li>
+            <a href="{% url 'listravitaillementcuve' %}" class="nav-link text-primary h5 ">Cuve</a>
+          </li>
+          <li>
+            <a href="{% url 'listravitaillementstation' %}" class="nav-link text-primary h5">à la Station</a>
+          </li>
+        </ul>
+    </li>
+    <br>
+
+    <li>
+      <a href="{%url 'listrajout' %}" class="nav-link text-primary h5">Rajouts</a>
+    </li>
+    <br>
+    <li>
+      <a href="{%url 'listcuve' %}" class="nav-link text-primary h5 ">Cuves</a>
+    </li>
+ 
+    <br>
+    <li>
+      <a href="{%url 'listvehicule' %}" class="nav-link text-primary h5">Véhicules</a>
+    </li>
+    <br>
+    <li>
+      <a href="{%url 'liststation' %}" class="nav-link text-primary h5">Stations</a>
+    </li>
+ 
+  </ul>
+</nav>

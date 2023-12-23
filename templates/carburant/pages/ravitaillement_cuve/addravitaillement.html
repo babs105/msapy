@@ -1,0 +1,22 @@
+{% extends 'carburant/layouts/base.html'%} 
+{% block title %}
+Carburant|Ravitaillement
+{%endblock %} 
+<!-- {%block sidebar%}
+{% include 'carburant/includes/sidebar_carburant.html'%} 
+{% endblock %}  -->
+
+{% block content %}
+<br>
+<div class="container border shadow-md  px-5 py-3 form-layout"> 
+  <h4 class="text-center text-secondary">Ajout Ravitaillement</h4>
+  <hr>
+  <br>
+  <form method="post" class="col-sm-12" action="{% url 'addravitaillement' %}">
+    {% csrf_token %} {{ form.as_p }}
+    <br>
+    <input type="submit" value="Enregistrer" class="btn btn-primary p-2" />
+  </form>
+</div>
+<br>
+{% endblock %}

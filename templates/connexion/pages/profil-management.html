@@ -1,0 +1,44 @@
+{% extends 'homeapp/layouts/base.html' %} {% block title %}App | Profile {% endblock %}
+{% block sidebar %} 
+{% include 'homeapp/includes/sidebar_homeapp.html'%}
+{%endblock%} 
+
+ {% block content %}
+ <br>
+ <h3 class="text-secondary text-center">Mettre à jour votre profil</h3>
+ <hr>
+ <div class="container border shadow-md p-4 form-layout"> 
+ <h4 class="text-secondary">Informations</h4>
+ <hr>
+  <form  method ="post" class="" >
+    {% csrf_token %}
+    {{ form_user.as_p }}
+    <br>
+    <button class="btn btn-info" type="submit">Modifier</button>
+  </form>
+ </div>
+ <br>
+ <div class="container border shadow-md p-4 form-layout"> 
+   <h4 class="text-secondary">Modifier votre photo de profil</h4>
+   <hr>
+
+   <form  method ="post" class="" enctype="multipart/form-data">
+    {% csrf_token %}
+        
+    {{ form_profile.as_p }}
+    <br>
+    <button class="btn btn-primary" type="submit">Modifier Photo</button>
+  </form>
+ 
+</div>
+  <br>
+  <div class="container border shadow-md p-4 form-layout"> 
+    <h4 class="text-secondary">Supprimer votre compte</h4>
+    <hr>
+ 
+      <br>
+      <a class="btn btn-danger" href="{% url 'delete-account' %}" >Supprimer</a>
+  
+ </div>
+ <br>
+ {% endblock %}

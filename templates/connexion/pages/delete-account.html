@@ -1,0 +1,25 @@
+{% extends 'homeapp/layouts/base.html' %} {% block title %}App | Profile {% endblock %}
+{% block sidebar %} 
+{% include 'homeapp/includes/sidebar_homeapp.html'%}
+{%endblock%} 
+
+ {% block content %}
+ <br>
+  <div class="container border shadow-md p-4 form-layout"> 
+    <h4 class="text-center text-secondary">Supprimer votre compte</h4>
+    <hr>
+    <form  method ="post" class="" action="">
+      {% csrf_token %}
+     
+      <h4 class="text-center text-danger">Voulez-vous vraiment supprimer votre compte ?</h4>
+      <br>
+      <div class="modal-footer d-flex justify-content-around align-items-center">
+        <a class="btn btn-secondary p-2"  href="{% url 'profil-management' %}" >Annuler</a>
+  
+        <button type="submit" class="btn btn-danger p-2">Supprimer</button>
+      </div>
+   
+    </form>
+ </div>
+ <br>
+ {% endblock %}

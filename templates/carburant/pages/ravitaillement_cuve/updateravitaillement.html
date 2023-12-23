@@ -1,0 +1,28 @@
+{% extends 'carburant/layouts/base.html'%} {% block title %}Page
+d'accueil{%endblock %} 
+<!-- {%block sidebar%} {%include 'carburant/includes/sidebar_carburant.html'%} 
+{%endblock%}   -->
+{%block content %}
+<br>
+<div class="container border shadow-md  p-5 form-layout"> 
+  <h4 class="text-center text-secondary">Modification Ravitaillement</h4>
+   <hr>
+  <br>
+  <form method="post" class="col-sm-12" action="" style="">
+    <!-- {{form.date_heure_ravitaillement}} -->
+    <!-- <input
+      type="datetime-local"
+      name="date_heure_ravitaillement"
+      value="{{ form.date_heure_ravitaillement.value|date:'Y-m-d\TH:i' }}"
+      class="form-control"
+      required
+    /> -->
+
+    {% csrf_token %} {{ form.as_p }}
+    <br>
+    <input type="submit" value="Enregistrer" class="btn btn-primary p-2" />
+  </form>
+  <br>
+</div>
+<br>
+{% endblock %}

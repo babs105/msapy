@@ -1,0 +1,97 @@
+{% extends 'carburant/layouts/base.html'%} {% block title %}Page
+d'accueil{%endblock %} 
+
+{%block content %}
+<div class="container-fluid" >
+
+  <h4 class="text-secondary">Ravitaillements Cuves</h4>
+  <hr>
+  <div class="d-flex justify-content-between align-items-start  w-100 mb-2">
+    <a href="{% url 'addravitaillement' %}" class="btn btn-sm btn-outline-primary  inline p-2">
+      Ajout Ravitaillement &nbsp;
+       <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    </a>
+      
+    <form class="col-sm-10 d-flex justify-content-end">
+          <!-- <div class="d-flex"> -->
+            <input type="date" placeholder="Date" name="keyword_date" class="form-control col-sm-3" value="{{keyword_date | date:'Y-m-d'}}"> &nbsp;
+            <input type="text" placeholder="Rechercher cuve ou vehicule" name="keyword" class="form-control col-sm-5"  value="{{keyword}}"> &nbsp;
+            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <!-- </div> -->
+    </form>
+  </div>
+
+  <table class="table table-hover table-sm w-100">
+    <thead class=" table bg-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date Ravitaillement</th>
+        <th scope="col">Vehicule</th>
+        <th scope="col">Affectation</th>
+        <th scope="col">Quantite</th>
+        <th scope="col">Cuve</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ravitaillement in ravitaillements_page %}
+      <tr>
+        <td scope="row">{{ravitaillement.id}}</td>
+        <td>{{ravitaillement.date_heure_ravitaillement|date:'d/m/Y H:i'}}</td>
+        <td>{{ravitaillement.vehicule.immatricule}}</td>
+        <td>{{ravitaillement.vehicule.affectation}}</td>
+        <td>{{ravitaillement.quantite}}</td>
+        <td>{{ravitaillement.cuve.nom}}</td>
+        <td>
+          <a href="#" class="btn btn-primary btn-sm" title="Voir"
+            ><i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+          <a
+          
+            href="{{ravitaillement.get_absolute_url}}"
+            class="btn btn-warning btn-sm"
+            title="Modifier"
+            ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a
+            href="{% url 'delravitaillement' ravitaillement.id %}"
+            class="btn btn-danger btn-sm"
+            title="Supprimer"
+            ><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </td>
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+
+
+<div class="container   ">
+    <ul class="pagination justify-content-center">
+        {% if ravitaillements_page.has_previous %}
+            <li class="page-item ">
+                <a class="page-link bg-primary" href="?page=1&keyword={{keyword}}&keyword_date={{keyword_date | date:'Y-m-d '}}">&laquo; Premier</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link  bg-primary" href="?page={{ravitaillements_page.previous_page_number }}&keyword={{keyword}}&keyword_date={{keyword_date | date:'Y-m-d'}}">Précédent</a>
+            </li>
+        {% endif %}
+         &nbsp;&nbsp;
+        <li class="page-item disabled ">
+            <span class="page-link bg-secondary ">Page {{ ravitaillements_page.number }} sur {{ ravitaillements_page.paginator.num_pages }}</span>
+        </li>
+         &nbsp;&nbsp;
+        {% if ravitaillements_page.has_next %}
+            <li class="page-item">
+                <a class="page-link bg-primary" href="?page={{ ravitaillements_page.next_page_number }}&keyword={{keyword}}&keyword_date={{keyword_date | date:'Y-m-d '}}">Suivant</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link bg-primary" href="?page={{ ravitaillements_page.paginator.num_pages }}&keyword={{keyword}}&keyword_date={{keyword_date | date:'Y-m-d'}}">Dernier &raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+</div>
+
+{% endblock %}
+
+<!-- href="{% url 'updateravitaillement' ravitaillement.id %}" -->
